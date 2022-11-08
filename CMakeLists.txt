@@ -12,6 +12,11 @@ add_executable(
     server.c
 )
 
+add_executable(
+    myclient
+    client.c
+)
+
 if(USE_OPENSSL)
     set(
         ENCRYPTION_LIB
@@ -30,6 +35,12 @@ endif()
 
 target_link_libraries(
     myserver
+	/usr/local/lib/libopen62541.a
+	${ENCRYPTION_LIB}
+)
+
+target_link_libraries(
+    myclient
 	/usr/local/lib/libopen62541.a
 	${ENCRYPTION_LIB}
 )
